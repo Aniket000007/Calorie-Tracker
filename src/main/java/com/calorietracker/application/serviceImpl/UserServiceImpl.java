@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(String id) {
+    public User getUser(String id) throws Exception{
 
         User user = userRepository.findByUserUID(id);
         if (user == null) {

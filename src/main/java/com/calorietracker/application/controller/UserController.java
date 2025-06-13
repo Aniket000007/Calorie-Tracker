@@ -22,7 +22,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/create")
-    public User CreateUser(@RequestBody UserDTO userDTO) {
+    public User CreateUser(@RequestBody UserDTO userDTO)  throws Exception{
 
         // check if the payload received is in userDTO form or not
         if (userDTO == null) {
@@ -64,7 +64,7 @@ public class UserController {
     }
 
     @GetMapping("/get/{id}")
-    public User GetUser(@PathVariable String id) {
+    public User GetUser(@PathVariable String id) throws Exception {
         return userService.getUser(id);
     }
 }
