@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.*;
 
+import com.calorietracker.application.dto.UpdateUserDTO;
 import com.calorietracker.application.dto.UserDTO;
 import com.calorietracker.application.enums.GoalType;
 import com.calorietracker.application.model.User;
@@ -61,6 +62,15 @@ public class UserController {
         }
         
         return userService.createUser(userDTO);
+    }
+
+    @PutMapping("/update/{id}")
+    public User UpdateUser(@PathVariable String id, @RequestBody UpdateUserDTO userDTO) throws Exception {
+
+        if (userDTO == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "UpdateUserDTO is required");
+        }
+        return userService.updateUser(id, userDTO);
     }
 
     @GetMapping("/get/{id}")
