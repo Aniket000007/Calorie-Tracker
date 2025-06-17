@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class UpdateUserDTO {
+    public String username;
     public String name;
     public String email;
     public String mobileNumber;

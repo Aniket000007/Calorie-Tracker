@@ -52,6 +52,14 @@ public class UserServiceImpl implements UserService {
                 throw new IllegalArgumentException("User not found with id: " + id);
             }
 
+            if (updateUserDTO.getUsername() != null) {
+                if (updateUserDTO.getUsername().length() < 3) {
+                    throw new IllegalArgumentException("Username must be at least 3 characters long");
+                }else{
+                    user.setUsername(updateUserDTO.getUsername());
+                }
+            }
+
             if (updateUserDTO.getName() != null) {
                 if (updateUserDTO.getName().length() < 3) {
                     throw new IllegalArgumentException("Name must be at least 3 characters long");
@@ -108,7 +116,8 @@ public class UserServiceImpl implements UserService {
                     user.setDailyGoal(updateUserDTO.getDailyGoal());
                 }
             }
-            return user;   
+            User newUser = userRepository.save(user);
+            return newUser;
         } catch (Exception e) {
             throw new IllegalArgumentException("Error updating user: " + e.getMessage());
         }
