@@ -3,7 +3,7 @@ package com.calorietracker.application.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import com.calorietracker.application.enums.GoalType;
+import com.calorietracker.application.enums.*;
 import com.calorietracker.application.util.IdGenerator;
 import java.time.LocalDate;
 
@@ -35,6 +35,9 @@ public class User {
     private LocalDate dateOfBirth;
 
     private Integer age;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     private Float weight;
 
